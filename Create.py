@@ -1,14 +1,14 @@
 import ChannelIdLookUp # type: ignore
-import IsLive # type: ignore
 import json
 
 API_KEY = ''
 CHANNEL = ''
 CHANNELID = ''
-WAIT = 20
+WAIT = 28
 
 if (API_KEY := input("What is your YouTube API key?\n")) == "":
-    API_KEY = 'AIzaSyAcz39G2DYE3rHaOVkIKs_Hl27rJsK8cwU'  # fallback default
+    print("API key cannot be empty. Please try again.")
+    
 
 if input('Do you want to try to find a channel using a handle? (y/n)\n') == 'y':
     CHANNELID = ChannelIdLookUp.ChannelIdLookUp(API_KEY, input('Please input the handle name: \n'))
@@ -19,7 +19,7 @@ if input('Do you want to try to find a channel using a handle? (y/n)\n') == 'y':
 else:
     CHANNELID = input("Please input your channel ID (ex: UCX6OQ3DkcsbYNE6H8uQQuVA):\n")
 
-WAIT = input("How often would you like this script to check for a live stream? (20 minute recommended)\n")
+WAIT = input("How often would you like this script to check for a live stream? (28 minutes recommended)\n")
 
 config = {
     "API_KEY": API_KEY,

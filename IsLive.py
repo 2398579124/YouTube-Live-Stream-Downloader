@@ -1,5 +1,11 @@
 import requests
 
+class YouTubeQuotaExceeded(Exception):
+    pass
+
+class YouTubeAPIError(Exception):
+    pass
+
 def GetLiveStreams(API_KEY, CHANNELID):
     url = "https://www.googleapis.com/youtube/v3/search"
     params = {
@@ -13,16 +19,23 @@ def GetLiveStreams(API_KEY, CHANNELID):
 
     data = requests.get(url, params=params).json()
 
+    # Handle API errors explicitly
+    if "error" in data:
+        reason = data["error"]["errors"][0].get("reason", "")
+        message = data["error"].get("message", "Unknown API error")
+        if reason == "quotaExceeded":
+            raise YouTubeQuotaExceeded(message)
+        else:
+            raise YouTubeAPIError(message)
+
     livestreams = []
 
-    if "items" in data:
-        for item in data["items"]:
-            video_id = item["id"]["videoId"]
-            title = item["snippet"]["title"]
-            livestreams.append({
-                "title": title,
-                "video_id": video_id,
-                "url": f"https://www.youtube.com/watch?v={video_id}"
-            })
+    for item in data.get("items", []):
+        video_id = item["id"]["videoId"]
+        livestreams.append({
+            "title": item["snippet"]["title"],
+            "video_id": video_id,
+            "url": f"https://www.youtube.com/watch?v={video_id}"
+        })
 
     return livestreams
