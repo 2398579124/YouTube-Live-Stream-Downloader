@@ -10,11 +10,9 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 def upload_youtube_video(
     video_file_path: str,
     title: str,
-    tags: list[str] = ["NC State"],
+    tags: list[str] = ["archival"],
     category_id: str = "25",
-    description: str = """automatic archival of NCLEG livestreams 
-created by Soren Gilkey Johnson
-https://github.com/2398579124/YouTube-Live-Stream-Downloader/""",
+    description: str = """automatic archival""",
     privacy_status: str = "public",
     client_secrets_file: str = "client_secret.json",
     token_file: str = "token.pickle"
