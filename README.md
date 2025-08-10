@@ -60,4 +60,7 @@ docker save youtube-archiver -o youtube-archiver.tar
 ## Troubleshooting / Tips
 ### Editing YouTube uploads.
 For video download settings (eg. resolution) see `Download.py`, lines 3-13, in the "options" variable ([see yt_dpl documentation](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#usage-and-options))  
-For video upload settings (eg. description) see `Upload.py`, lines 10-19, in the  function parameters for upload_youtube_video() ([see Google documentation](https://developers.google.com/youtube/v3/docs/videos/insert))
+For video upload settings (eg. description) see `Upload.py`, lines 10-19 & 43-55, in the function parameters for upload_youtube_video() ([see Google documentation](https://developers.google.com/youtube/v3/docs/videos/insert))
+### Troubleshooting
+Make sure all file names are correct. Google may save the client_secret.json with numbers after it, if so rename it.  
+You may need to alter the "redirect_uris" variable in client_secret.json (Ex: try "http://localhost:52808/" and ensure that OAuth expects the port to be 52808). 
