@@ -72,11 +72,12 @@ def upload_youtube_video(
                 print(f"Uploaded {int(status.progress() * 100)}%")
     except HttpError as e:
         if e.resp.status == 403 and b"quota" in e.content.lower():
-            print("❌ Quota exceeded during upload. Stopping upload.")
+            print("Quota exceeded during upload. Stopping upload.")
             return None
         else:
             raise
 
     video_id = response.get("id")
     print(f"Upload complete: https://www.youtube.com/watch?v={video_id}")
+
     return video_id
