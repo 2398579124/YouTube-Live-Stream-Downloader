@@ -59,5 +59,5 @@ docker save youtube-archiver -o youtube-archiver.tar
 4. For more tips see the [Docker Documentation](https://docs.docker.com/)
 ## Troubleshooting / Tips
 ### Editing YouTube uploads.
-For video download settings (eg. resolution) see `Download.py`, lines 3-13, in the "options" variable ([see yt_dpl documentation](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#usage-and-options))
+For video download settings (eg. resolution) see `Download.py`, lines 3-13, in the "options" variable ([see yt_dpl documentation](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#usage-and-options))  
 For video upload settings (eg. description) see `Upload.py`, lines 10-19, in the  function parameters for upload_youtube_video() ([see Google documentation](https://developers.google.com/youtube/v3/docs/videos/insert))
